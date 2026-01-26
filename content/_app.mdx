@@ -4,7 +4,7 @@ import {CanopyHeader, CanopyFooter} from "@canopy-iiif/app/ui";
 export function Head() {
   return (
     <>
-      <Meta siteTitle="Site Title" />
+      <Meta siteTitle="Aggie Building History" />
       <Stylesheet />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
@@ -26,9 +26,10 @@ export function App({children}) {
       <CanopyHeader
         navigation={[
           {href: "/search", label: "Works"},
-          {href: "/about", label: "About"},
+          {href: "/map", label: "Map"},
+          {href: "/timeline", label: "Timeline"},
         ]}
-        title="Site Title"
+        title="Aggie Building History"
         logo={Logo}
       />
       <main>{children}</main>
