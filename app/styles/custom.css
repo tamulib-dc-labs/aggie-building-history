@@ -7,7 +7,18 @@
   :root,
   :host {
     --color-tamu-maroon: #500000;
-    --color-accent-700: #500000;
+
+    /* Full maroon color scale */
+    --color-accent-50: #fdf2f2;
+    --color-accent-100: #f9e3e3;
+    --color-accent-200: #f0c5c5;
+    --color-accent-300: #e09898;
+    --color-accent-400: #c96666;
+    --color-accent-500: #aa3939;
+    --color-accent-600: #8b1a1a;
+    --color-accent-700: #6d0000;
+    --color-accent-800: #500000;
+    --color-accent-900: #300000;
     --color-accent-default: #500000;
   }
 }
