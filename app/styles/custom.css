@@ -21,9 +21,15 @@
     --color-accent-900: #300000 !important;
     --color-accent-default: #500000 !important;
 
-    /* Clover IIIF Viewer theme overrides */
-    --colors-accent: #500000 !important;
-    --colors-accentAlt: #300000 !important;
-    --colors-accentMuted: #8b1a1a !important;
   }
+}
+
+/* Clover IIIF Viewer theme overrides
+ * Target the component directly to override Stitches-generated theme classes
+ */
+.clover-viewer,
+.clover-viewer [class*="t-"] {
+  --colors-accent: #500000 !important;
+  --colors-accentAlt: #300000 !important;
+  --colors-accentMuted: #8b1a1a !important;
 }
