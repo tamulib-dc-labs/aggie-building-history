@@ -9,17 +9,17 @@
     --color-tamu-maroon: #500000;
 
     /* Full maroon color scale for Canopy UI */
-    --color-accent-50: #fdf2f2;
-    --color-accent-100: #f9e3e3;
-    --color-accent-200: #f0c5c5;
-    --color-accent-300: #e09898;
-    --color-accent-400: #c96666;
-    --color-accent-500: #aa3939;
-    --color-accent-600: #8b1a1a;
-    --color-accent-700: #6d0000;
-    --color-accent-800: #500000;
-    --color-accent-900: #300000;
-    --color-accent-default: #500000;
+    --color-accent-50: #fdf2f2 !important;
+    --color-accent-100: #f9e3e3 !important;
+    --color-accent-200: #f0c5c5 !important;
+    --color-accent-300: #e09898 !important;
+    --color-accent-400: #c96666 !important;
+    --color-accent-500: #aa3939 !important;
+    --color-accent-600: #8b1a1a !important;
+    --color-accent-700: #6d0000 !important;
+    --color-accent-800: #500000 !important;
+    --color-accent-900: #300000 !important;
+    --color-accent-default: #500000 !important;
 
     /* Clover IIIF Viewer theme overrides */
     --colors-accent: #500000 !important;
