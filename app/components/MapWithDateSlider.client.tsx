@@ -181,12 +181,12 @@ export default function MapWithDateSlider({
           const enriched: EnrichedMarker[] = [];
           navData.manifests.forEach((manifest) => {
             const meta = hrefToMeta.get(manifest.href);
-            const dateBuilt = parseYear(meta?.[0]);
+            const dateBuilt = parseYear(meta?.[0]) ?? 2025;
             const razedRaw = meta?.[1];
             const dateRazed =
               razedRaw && razedRaw.toLowerCase() !== "present"
-                ? parseYear(razedRaw)
-                : null;
+                ? (parseYear(razedRaw) ?? 2025)
+                : 2025;
 
             manifest.features.forEach((feature, i) => {
               enriched.push({
@@ -244,9 +244,8 @@ export default function MapWithDateSlider({
   const filteredMarkers = useMemo(() => {
     if (!markers.length || startYear === null || endYear === null) return markers;
     return markers.filter(({ dateBuilt, dateRazed }) => {
-      if (dateBuilt === null) return true;
       if (dateBuilt > endYear) return false;
-      if (dateRazed !== null && dateRazed < startYear) return false;
+      if (dateRazed < startYear) return false;
       return true;
     });
   }, [markers, startYear, endYear]);
