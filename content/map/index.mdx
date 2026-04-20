@@ -6,10 +6,23 @@ title: Mapping the Collection
 
 Our manifests encode navPlace metadata, so we can show a geographic overview:
 
-<Map
-  iiifContent="https://tamulib-dc-labs.github.io/sesquicentennial-manifests/collections.json"
-  height="520px">
-    <MapPoint lat="41.8781" lng="-87.6298" title="Newberry Library" summary="Chicago, IL" href="/works/newberry-atlas" />
-    <MapPoint lat="22.5726" lng="88.3639" title="Calcutta" summary="Survey depot" />
-
-</Map>
+<MapWithDateSlider
+  iiifContent="https://archipelago-dev.library.tamu.edu/do/62f974fe-f33e-4156-a9b8-54c05741d3fb/metadata/iiifmanifest3collection/default.jsonld"
+  height="860px"
+  cluster={true}
+  maxClusterRadius={200}
+  tileLayers={[
+    {
+      name: "Esri Satellite",
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      attribution: "Tiles &copy; Esri",
+      maxZoom: 19
+    },
+    {
+      name: "OpenStreetMap",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 19
+    }
+  ]}
+/>

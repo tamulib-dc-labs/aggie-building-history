@@ -3,6 +3,8 @@
  * @see https://canopy-iiif.github.io/app/docs/theming/tailwind#custom
  */
 
+
+
 @layer properties {
   :root,
   :host {
@@ -21,6 +23,8 @@
     --color-accent-900: #300000 !important;
     --color-accent-default: #500000 !important;
 
+    --font-serif: Georgia, Times, serif;
+
   }
 }
 
@@ -32,4 +36,30 @@
   --colors-accent: #500000 !important;
   --colors-accentAlt: #300000 !important;
   --colors-accentMuted: #8b1a1a !important;
+}
+
+/* Map cluster coverage polygon (hover convex hull) */
+.canopy-map .leaflet-overlay-pane path {
+  stroke: #500000 !important;
+  fill: #500000 !important;
+  fill-opacity: 0.15 !important;
+  stroke-opacity: 0.5 !important;
+}
+
+/* Map cluster overrides: maroon + rounded */
+.canopy-map__cluster {
+  background-color: #500000;
+  color: #ffffff;
+  border-radius: 50% !important;
+}
+
+.canopy-map__marker-thumb {
+  border-color: #500000 !important;
+  border-radius: 50% !important;
+}
+
+.canopy-interstitial--hero {
+  --hero-bg-start: #f6f6f6;   /* --gray-100 */
+  --hero-bg-mid:   #e9e4dc;   /* --ivory    */
+  --hero-bg-end:   #d6d3c4;   /* --cream    */
 }

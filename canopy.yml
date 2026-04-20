@@ -1,14 +1,11 @@
+title: Aggieland Through Time
 collection:
-  - https://tamulib-dc-labs.github.io/sesquicentennial-manifests/collections.json
+  - https://archipelago-dev.library.tamu.edu/do/62f974fe-f33e-4156-a9b8-54c05741d3fb/metadata/iiifmanifest3collection/default.jsonld
 metadata:
-  - Built
-  - Razed
-  - Building Facts
-  - Sources
-  - Coordinates
+  - Date Built
+  - Date Razed
 featured:
-  - https://tamulib-dc-labs.github.io/sesquicentennial-manifests/building_history/Academic_Building.json
-  - https://tamulib-dc-labs.github.io/sesquicentennial-manifests/building_history/Old_Main.json
+  - "https://archipelago-dev.library.tamu.edu/do/2d9764ab-3cca-4f05-b73a-6e49e9c3ff69/metadata/iiifmanifest3cws/default.jsonld"
 search:
   results:
     work:
@@ -24,7 +21,7 @@ search:
     summary:
       enabled: true
     annotations:
-      enabled: false
+      enabled: true
       motivation:
         - commenting
         - tagging
