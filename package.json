@@ -5,8 +5,8 @@
   "private": true,
   "main": "app/scripts/canopy-build.mjs",
   "scripts": {
-    "build": "tsx app/scripts/canopy-build.mts",
-    "dev": "tsx app/scripts/canopy-build.mts"
+    "build": "CANOPY_BASE_PATH=/aggieland-through-time tsx app/scripts/canopy-build.mts && CANOPY_BASE_PATH=/aggieland-through-time node app/scripts/patch-base-path.mjs",
+    "dev": "tsx app/scripts/canopy-build.mts && node app/scripts/patch-base-path.mjs"
   },
   "dependencies": {
     "@canopy-iiif/app": "^1.10.7",

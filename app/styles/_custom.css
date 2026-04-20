@@ -63,3 +63,59 @@
   --hero-bg-mid:   #e9e4dc;   /* --ivory    */
   --hero-bg-end:   #d6d3c4;   /* --cream    */
 }
+
+/* ── TAMU institutional top bar ── */
+#tamu-top-bar {
+  background-color: #500000;
+  width: 100%;
+}
+
+.tamu-top-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+}
+
+.tamu-top-bar__brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.tamu-top-bar__brand svg {
+  height: 48px;
+  width: auto;
+}
+
+.tamu-top-bar__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tamu-top-bar__link {
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.tamu-top-bar__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .tamu-top-bar__nav {
+    gap: 1rem;
+  }
+  .tamu-top-bar__brand svg {
+    height: 36px;
+  }
+}

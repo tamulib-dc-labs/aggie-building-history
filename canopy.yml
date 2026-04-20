@@ -1,4 +1,6 @@
 title: Aggieland Through Time
+site:
+  baseUrl: https://innovation.library.tamu.edu/aggieland-through-time
 collection:
   - https://archipelago-dev.library.tamu.edu/do/62f974fe-f33e-4156-a9b8-54c05741d3fb/metadata/iiifmanifest3collection/default.jsonld
 metadata:
