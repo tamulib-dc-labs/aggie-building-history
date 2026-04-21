@@ -45,7 +45,15 @@ canonical: https://tamulib-dc-labs.github.io/aggie-building-history/timeline.htm
   />
 </Timeline>
 
-<Map>
+<Map
+    tileLayers={[
+        {
+          name: "Esri Satellite",
+          url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          attribution: "Tiles &copy; Esri",
+          maxZoom: 19
+        }]}
+>
   <MapPoint
     lat="30.61646646017527"
     lng="-96.3427634994732"
@@ -91,12 +99,13 @@ canonical: https://tamulib-dc-labs.github.io/aggie-building-history/timeline.htm
     ]}
   />
 </Map>
+
 <Timeline
   title="Early Expansion"
   range={{start: "1883", end: "1900", granularity: "day"}}
   threshold={100}
   steps={100}
-  height="600px"
+  height="800px"
 >
     <TimelinePoint
         date="1887"
