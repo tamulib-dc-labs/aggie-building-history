@@ -6,7 +6,7 @@
   "main": "app/scripts/canopy-build.mjs",
   "scripts": {
     "build": "CANOPY_BASE_PATH=/aggieland-through-time tsx app/scripts/canopy-build.mts && CANOPY_BASE_PATH=/aggieland-through-time node app/scripts/patch-base-path.mjs",
-    "dev": "tsx app/scripts/canopy-build.mts && node app/scripts/patch-base-path.mjs"
+    "dev": "DEV_ONCE=1 tsx app/scripts/canopy-build.mts && node app/scripts/patch-base-path.mjs && tsx app/scripts/canopy-build.mts"
   },
   "dependencies": {
     "@canopy-iiif/app": "^1.10.7",
