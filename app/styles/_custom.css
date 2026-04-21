@@ -74,9 +74,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.5rem;
 }
 
 .tamu-top-bar__brand {
@@ -87,35 +86,40 @@
 }
 
 .tamu-top-bar__brand svg {
-  height: 48px;
+  height: 52px;
   width: auto;
 }
 
 .tamu-top-bar__nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .tamu-top-bar__link {
   color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
-  opacity: 0.9;
+  opacity: 0.85;
+  transition: opacity 0.15s;
 }
 
 .tamu-top-bar__link:hover {
   opacity: 1;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .tamu-top-bar__nav {
     gap: 1rem;
   }
+  .tamu-top-bar__link {
+    font-size: 0.75rem;
+  }
   .tamu-top-bar__brand svg {
-    height: 36px;
+    height: 40px;
   }
 }
