@@ -51,9 +51,10 @@ function ensureLeafletCss(): void {
   if (cssInjected || typeof document === "undefined") return;
   cssInjected = true;
 
+  const basePath = typeof window !== "undefined" ? ((window as any).CANOPY_BASE_PATH || "") : "";
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "/scripts/canopy-map.css";
+  link.href = `${basePath}/scripts/canopy-map.css`;
   document.head.appendChild(link);
 
   // Dual-range slider: disable track click, re-enable on thumb only, custom thumb style
@@ -159,10 +160,11 @@ export default function MapWithDateSlider({
   // ── 2. Fetch pre-built static data ────────────────────────────────────
   useEffect(() => {
     let cancelled = false;
+    const bp = typeof window !== "undefined" ? ((window as any).CANOPY_BASE_PATH || "") : "";
     Promise.all([
-      fetch("/api/navplace.json").then((r) => r.json()),
-      fetch("/api/search-records.json").then((r) => r.json()),
-      fetch("/api/search-index.json").then((r) => r.json()),
+      fetch(`${bp}/api/navplace.json`).then((r) => r.json()),
+      fetch(`${bp}/api/search-records.json`).then((r) => r.json()),
+      fetch(`${bp}/api/search-index.json`).then((r) => r.json()),
     ])
       .then(
         ([navData, records, indexData]: [
@@ -325,6 +327,7 @@ export default function MapWithDateSlider({
         })
       : L.layerGroup();
 
+    const bp = typeof window !== "undefined" ? ((window as any).CANOPY_BASE_PATH || "") : "";
     filteredMarkers.forEach((m) => {
       const icon = L.divIcon({
         className: "",
@@ -343,7 +346,7 @@ export default function MapWithDateSlider({
 
       const popupContent = `
         <div style="width:200px">
-          <a href="${m.href}" style="text-decoration:none;color:inherit">
+          <a href="${bp}${m.href}" style="text-decoration:none;color:inherit">
             <img src="${m.thumbnail}"
                  style="width:100%;height:130px;object-fit:cover;display:block"
                  alt="${m.title}" />
