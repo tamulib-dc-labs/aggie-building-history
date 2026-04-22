@@ -123,3 +123,11 @@
     height: 40px;
   }
 }
+
+
+.leaflet-overlay-pane path {
+  stroke: #500000 !important;
+  fill: #500000 !important;
+  fill-opacity: 0.15 !important;
+  stroke-opacity: 0.5 !important;
+}
