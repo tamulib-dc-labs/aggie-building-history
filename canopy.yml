@@ -31,5 +31,5 @@ search:
         - tagging
 theme:
   appearance: light
-  accentColor: teal
+  accentColor: red
   grayColor: slate

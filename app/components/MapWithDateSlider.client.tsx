@@ -130,13 +130,15 @@ function parseYear(val: string | null | undefined): number | null {
 export default function MapWithDateSlider({
   height = "800px",
   cluster = true,
-  maxClusterRadius = 200,
+  maxClusterRadius = 20,
+  disableClusteringAtZoom = 19,
   tileLayers,
 }: {
   iiifContent?: string; // accepted but unused — data comes from static files
   height?: string;
   cluster?: boolean;
   maxClusterRadius?: number;
+  disableClusteringAtZoom?: number;
   tileLayers?: TileLayer[];
 }) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -306,6 +308,7 @@ export default function MapWithDateSlider({
     const group: any = useCluster
       ? (L as any).markerClusterGroup({
           maxClusterRadius,
+          disableClusteringAtZoom,
           iconCreateFunction: (c: any) => {
             const n = c.getChildCount();
             // All styling inline so the number is guaranteed centered
@@ -381,7 +384,7 @@ export default function MapWithDateSlider({
         initialBoundsSetRef.current = true;
       }
     }
-  }, [filteredMarkers, mapReady, cluster, maxClusterRadius]);
+  }, [filteredMarkers, mapReady, cluster, maxClusterRadius, disableClusteringAtZoom]);
 
   // ── Render ─────────────────────────────────────────────────────────────
 

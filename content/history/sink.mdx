@@ -58,3 +58,29 @@ While it may appear minor in comparison to academic or administrative buildings,
 In this way, the Sink Building stands as a small but meaningful chapter in the history of Texas A&M University, illustrating how even the most basic facilities can reflect broader transformations in campus life.
 
 <ReferencedItems />
+
+<Map
+    tileLayers={[
+    {
+      name: "Esri Satellite",
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      attribution: "Tiles &copy; Esri",
+      maxZoom: 19
+    },
+    {
+      name: "OpenStreetMap",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 19
+    }
+  ]}
+>
+  <MapPoint
+    lat="30.616192984556307"
+    lng="-96.34018315020464"
+    title="Academic Building"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/3bcf1557-c5d6-45e7-a3d8-2f0975bddc95/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+</Map>

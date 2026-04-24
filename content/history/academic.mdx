@@ -70,3 +70,30 @@ Prexy’s Moon may have been a small fixture, but it reflects larger themes in T
 * The way practical features can become enduring stories
 
 Today, Prexy’s Moon is remembered less for the light it cast and more for the glimpse it provides into a different era—when the Academic Building quite literally watched over campus, and students occasionally took aim at it.
+
+
+<Map
+    tileLayers={[
+    {
+      name: "Esri Satellite",
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      attribution: "Tiles &copy; Esri",
+      maxZoom: 19
+    },
+    {
+      name: "OpenStreetMap",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 19
+    }
+  ]}
+>
+  <MapPoint
+    lat="30.6157455971669"
+    lng="-96.3408614932671"
+    title="Academic Building"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/16f633ab-feb3-45c9-81bc-8b56076abd91/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+</Map>
