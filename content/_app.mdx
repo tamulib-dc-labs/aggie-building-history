@@ -1,5 +1,5 @@
 import {Meta, Stylesheet} from "@canopy-iiif/app/head";
-import {CanopyHeader, CanopyFooter} from "@canopy-iiif/app/ui";
+import {CanopyHeader} from "@canopy-iiif/app/ui";
 
 export function Head() {
   return (
@@ -15,6 +15,10 @@ export function Head() {
       <link
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,50,0..1;1,9..144,300..600,50,0..1&display=swap"
         rel="stylesheet"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       />
     </>
   );
@@ -34,9 +38,7 @@ export function App({children}) {
         logo={Logo}
       />
       <main>{children}</main>
-      <CanopyFooter>
-        <p>A Part of Our Sesquicentennial Celebration</p>
-      </CanopyFooter>
+      <TAMUFooter />
     </>
   );
 }
