@@ -15,4 +15,6 @@ export const clientComponents = {
   ExampleClient: './Example.client.tsx',
   StoryMapJS: './StoryMapJS.client.tsx',
   MapWithDateSlider: './MapWithDateSlider.client.tsx',
+  BeforeAfter: './BeforeAfter.client.tsx',
+  OpacityCompare: './OpacityCompare.client.tsx',
 };
