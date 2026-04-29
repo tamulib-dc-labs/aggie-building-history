@@ -109,10 +109,10 @@ canonical: https://tamulib-dc-labs.github.io/aggie-building-history/timeline.htm
 
 <Timeline
   title="Early Expansion"
-  range={{start: "1883", end: "1900", granularity: "day"}}
+  range={{start: "1883", end: "1903", granularity: "day"}}
   threshold={100}
   steps={100}
-  height="800px"
+  height="1000px"
 >
     <TimelinePoint
         date="1887"
@@ -158,3 +158,133 @@ canonical: https://tamulib-dc-labs.github.io/aggie-building-history/timeline.htm
         ]}
       />
 </Timeline>
+
+<Map
+    tileLayers={[
+        {
+          name: "Esri Satellite",
+          url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          attribution: "Tiles &copy; Esri",
+          maxZoom: 19
+        },
+        {
+          name: "OpenStreetMap",
+          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          attribution: "&copy; OpenStreetMap contributors",
+          maxZoom: 19
+        }
+    ]}
+>
+  <MapPoint
+    lat="30.615279402354503"
+    lng="-96.34029239012962"
+    title="Pfeuffer Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/553b8678-7a54-40bd-82fc-aa17ba0116d8/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61655979023509"
+    lng="-96.341575293157"
+    title="Austin Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/27afc94c-f65a-42f6-9bc0-5fb74453ad2e/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.614289031870623"
+    lng="-96.3406275676129"
+    title="Assembly Hall 1889"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/6038500a-22c9-46f4-8bd5-6d77081ece14/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.615696608886644"
+    lng="-96.33968200199595"
+    title="Science Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/f3e19c6d-3d24-47ea-b6c2-1bef99450630/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61715205951018"
+    lng="-96.34550161000408"
+    title="Bachelor Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/0c56d527-b82d-4c50-928d-946dd069570a/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61591873065132"
+    lng="-96.34133647593396"
+    title="Century Tree"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/45bb2217-7101-4aef-ac42-e1cd9d069cf9/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61638563769229"
+    lng="-96.34404519294328"
+    title="President’s House 1891"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/e758c81f-67d4-47f5-9d71-1c4666d61aac/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.616379067918217"
+    lng="-96.34126456573408"
+    title="Mechanical Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/dc16b43a-6049-46bb-8a53-fd527e1ab38f/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.615637171448363"
+    lng="-96.34200152594852"
+    title="Ross Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/23504d2b-7298-407b-940e-4cc8ca5833fc/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61714140979243"
+    lng="-96.34005356212724"
+    title="Natatorium 1894"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/9a8a42bc-936a-4b77-beb7-8e24c4e26fe1/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.615969963845004"
+    lng="-96.34421962699072"
+    title="Old Mess Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/94b6d256-78af-4d69-ba73-7e4ab547db6c/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61516150391027"
+    lng="-96.3412189637293"
+    title="Foster Hall"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/4cfeb71c-a2d9-43f7-b434-2888d1ddb621/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.61232838093903"
+    lng="-96.3453345014857"
+    title="Train Depot 1883"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/c8077f60-e3c3-41c7-ae3a-74c9b9b7385d/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+  <MapPoint
+    lat="30.616192984556307"
+    lng="-96.34018315020464"
+    title="Sink Building"
+    referencedManifests={[
+      "https://archipelago-dev.library.tamu.edu/do/3bcf1557-c5d6-45e7-a3d8-2f0975bddc95/metadata/iiifmanifest3cws/default.jsonld",
+    ]}
+  />
+</Map>
