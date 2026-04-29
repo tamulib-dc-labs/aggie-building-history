@@ -131,3 +131,12 @@
   fill-opacity: 0.15 !important;
   stroke-opacity: 0.5 !important;
 }
+
+.clover-slider-header-view-all {
+    background-color: #500000 !important;
+}
+
+
+[data-testid="slider-header"] button div {
+  background-color: #500000 !important;
+}
