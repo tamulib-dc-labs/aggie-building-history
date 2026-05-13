@@ -50,7 +50,9 @@ import {
   return (
     <Container>
       <h2>Location</h2>
-      <Map tileLayers={[
+      <Map
+       defaultZoom={15}
+       tileLayers={[
         {
           name: "Carto Positron (Light)",
           url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
