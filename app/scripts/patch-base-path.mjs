@@ -25,6 +25,23 @@ if (BASE_PATH) {
   }
   writeFileSync(jsFile, src);
   console.log(`[patch] Patched ${jsCount} hardcoded path(s) in canopy-custom-components.js with base path "${BASE_PATH}".`);
+
+  // ── Fix double base-path application in canopy-search-form.js ────────────────
+  // The canopy package's withBase()/L() function is called twice on every search
+  // result href: once in loadRecords() and again in renderList(). Without an
+  // idempotency guard, a second call doubles the base path segment
+  // (e.g. /aggieland-through-time/aggieland-through-time/works/...).
+  // We add the guard here because the runtime JS ships without it.
+  const sfFile = join(process.cwd(), 'site', 'scripts', 'canopy-search-form.js');
+  let sfSrc = readFileSync(sfFile, 'utf8');
+  const SF_OLD = 'if(/^https?:/i.test(n))return n;let d=n.replace(/^\\/+/,"");return`${l}/${d}`';
+  const SF_NEW = 'if(/^https?:/i.test(n))return n;if(n===l||n.startsWith(l+"/"))return n;let d=n.replace(/^\\/+/,"");return`${l}/${d}`';
+  const sfPatched = sfSrc.split(SF_OLD).join(SF_NEW);
+  const sfFixed = sfPatched !== sfSrc;
+  writeFileSync(sfFile, sfPatched);
+  console.log(sfFixed
+    ? '[patch] Fixed withBase() idempotency in canopy-search-form.js (prevents doubled base path in typeahead).'
+    : '[patch] WARNING: could not locate withBase() pattern in canopy-search-form.js — typeahead URLs may be doubled.');
 } else {
   console.log('[patch] No CANOPY_BASE_PATH set — skipping JS path patch (dev mode).');
 }
