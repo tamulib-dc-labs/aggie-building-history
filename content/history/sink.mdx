@@ -60,20 +60,74 @@ In this way, the Sink Building stands as a small but meaningful chapter in the h
 <ReferencedItems />
 
 <Map
-    tileLayers={[
-    {
-      name: "Esri Satellite",
-      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      attribution: "Tiles &copy; Esri",
-      maxZoom: 19
-    },
-    {
-      name: "OpenStreetMap",
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: "&copy; OpenStreetMap contributors",
-      maxZoom: 19
-    }
-  ]}
+tileLayers={[
+        {
+          name: "Carto Positron (Light)",
+          url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          attribution: "&copy; OpenStreetMap &copy; CARTO",
+          maxZoom: 20
+        },
+        {
+          name: "Carto Voyager",
+          url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+          attribution: "&copy; OpenStreetMap &copy; CARTO",
+          maxZoom: 20
+        },
+        {
+          name: "Carto Dark Matter",
+          url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          attribution: "&copy; OpenStreetMap &copy; CARTO",
+          maxZoom: 20
+        },
+        {
+          name: "Esri Satellite",
+          url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          attribution: "Tiles &copy; Esri",
+          maxZoom: 19
+        },
+        {
+          name: "OpenStreetMap",
+          url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          attribution: "&copy; OpenStreetMap contributors",
+          maxZoom: 19
+        },
+        {
+          name: "Thunderforest Pioneer",
+          url: "https://api.thunderforest.com/pioneer/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        },
+        {
+          name: "Thunderforest Landscape",
+          url: "https://api.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        },
+        {
+          name: "Thunderforest Outdoors",
+          url: "https://api.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        },
+        {
+          name: "Thunderforest OpenCycleMap",
+          url: "https://api.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        },
+        {
+          name: "Thunderforest Neighborhood",
+          url: "https://api.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        },
+         {
+          name: "Thunderforest Atlas",
+          url: "https://api.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=030c864a552447eb8830a67a6a45bc9b",
+          attribution: "&copy; Thunderforest &copy; OpenStreetMap contributors",
+          maxZoom: 22
+        }
+    ]}
 >
   <MapPoint
     lat="30.616192984556307"
