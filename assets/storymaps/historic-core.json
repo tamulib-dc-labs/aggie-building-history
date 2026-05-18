@@ -1,0 +1,147 @@
+{
+  "width": 1200,
+  "height": 680,
+  "font_css": "stock:abril-dosis",
+  "calculate_zoom": true,
+  "storymap": {
+    "language": "en",
+    "map_type": "osm:standard",
+    "map_as_image": false,
+    "call_to_action": true,
+    "call_to_action_text": "Begin Tour",
+    "slides": [
+      {
+        "type": "overview",
+        "text": {
+          "headline": "Historic Core Walking Tour",
+          "text": "<p>A self-guided walk through the buildings that shaped Texas A&amp;M University, from its founding in 1876 to the mid-twentieth century. Ten stops, roughly one mile, beginning at the site of Old Main — the university's first building.</p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/64d%2Fimage-att-academicbuilding-002-edit-8b0155e5-5f8b-44ab-8725-9e83c6796557.jp2/full/!800,600/0/default.jpg",
+          "caption": "The Academic Building, built in 1914 on the site of Old Main",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61571, "lon": -96.34090 },
+        "text": {
+          "headline": "Stop 1 — Old Main (1876–1912)",
+          "text": "<p>Old Main was the first building on the Texas A&amp;M campus, completed in September 1876 at a cost of $100,000. Its bricks were made from clay fired on site. The building served as classroom, dormitory, and administrative center all at once — a single structure housing an entire university. It burned to the ground in 1912, and the Academic Building was constructed on its footprint two years later.</p><p><a href='/works/old-main-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu//iiif//2//4cd%2Fimage-att-oldmain-058-edit-adf55089-d493-446e-bf11-eed0e3b062a1.jp2/full/full/0/default.jpg",
+          "caption": "Old Main, the first building on the Texas A&M campus",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61575, "lon": -96.34086 },
+        "text": {
+          "headline": "Stop 2 — Academic Building (1914–present)",
+          "text": "<p>Rising from the ashes of Old Main, the Academic Building was completed in 1914 at a cost of $225,000. Its copper dome has been a campus landmark ever since. For several years after World War I, a small lamp mounted at the dome's peak — known as Prexy's Moon — served as an unofficial target for sharpshooting cadets. It was removed in 1931.</p><p><a href='/works/academic-building-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/64d%2Fimage-att-academicbuilding-002-edit-8b0155e5-5f8b-44ab-8725-9e83c6796557.jp2/full/!800,600/0/default.jpg",
+          "caption": "The Academic Building, completed in 1914",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61592, "lon": -96.34134 },
+        "text": {
+          "headline": "Stop 3 — The Century Tree (1891–present)",
+          "text": "<p>Planted in 1891, the live oak known as the Century Tree is one of the oldest living monuments on campus. By tradition, walking beneath it with a sweetheart seals the relationship — and couples who later marry sometimes return here for photographs. The tree stands at the center of the Academic Plaza, a quiet landmark in the middle of a busy campus.</p><p><a href='/works/century-tree-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu//iiif//2//31a%2Fimage-att-centurytree-20110626-876ca8a7-ebff-42bb-812a-7bd8e75d15d2.jpg/full/full/0/default.jpg",
+          "caption": "The Century Tree, planted in 1891",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61516, "lon": -96.34122 },
+        "text": {
+          "headline": "Stop 4 — Foster Hall (1899–1951)",
+          "text": "<p>Erected in 1899 at a cost of $28,000, Foster Hall served as a dormitory for more than fifty years before being razed in 1951. It was named for Lafayette Lumpkin Foster, Texas A&amp;M president from 1898 to 1901. Like most early campus buildings, it housed functions we now spread across many separate facilities — its loss is a reminder of how much of the original campus is gone.</p><p><a href='/works/foster-hall-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu//iiif//2//1e2%2Fimage-att-fosterhall-0012-edit-634d70ed-f0fc-4c99-9d90-62b9b2828c4f.jp2//full//full//0//default.jpg",
+          "caption": "Foster Hall, erected 1899 and razed 1951",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61429, "lon": -96.34063 },
+        "text": {
+          "headline": "Stop 5 — Assembly Hall (1889–1929)",
+          "text": "<p>The fifth principal building erected on campus, the 1889 Assembly Hall cost $22,218.64 and stood for forty years before being razed in 1929. It served as chapel, theater, and general gathering space — reflecting the quasi-military structure of early cadet life in which the whole student body was expected to assemble together. A later Assembly Hall, built in 1923, replaced it nearby.</p><p><a href='/works/assembly-hall-1889.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/558%2Fimage-att-assemplyhall1889-2846172157-ee26bf4ee1-o-edit-d990dad0-bbfe-4b70-be7e-ab73c7d47cfe.jp2/full/full/0/default.jpg",
+          "caption": "Assembly Hall, built 1889 and razed 1929",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61522, "lon": -96.34234 },
+        "text": {
+          "headline": "Stop 6 — YMCA Building (1914–present)",
+          "text": "<p>Completed in 1914, the YMCA Building once housed a chapel, swimming pool, and bowling alley — an unusually generous range of amenities for the era. It holds a particular place in Aggie tradition: the first Midnight Yell Practice was held on its front steps in 1931, a rowdy pre-game tradition that continues before every home football game to this day.</p><p><a href='/works/ymca-building.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/2b1%2Fimage-att-ymca-20190528-a9e01c78-a6ad-4418-af28-0ef63e0301be.jpg/full/full/0/default.jpg",
+          "caption": "The YMCA Building, where the first Midnight Yell was held in 1931",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61699, "lon": -96.34352 },
+        "text": {
+          "headline": "Stop 7 — Sbisa Dining Hall (1913–present)",
+          "text": "<p>When the 1898 mess hall burned in 1911, a new dining facility was commissioned and completed in 1913. It was named for Bernard Sbisa, who served as steward for the college from 1879 to 1926 — nearly half a century of feeding cadets. At its opening, Sbisa Dining Hall could seat the entire student body at once, a feat that became increasingly difficult as enrollment grew through the twentieth century.</p><p><a href='/works/sbisa-dining-hall-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/8f4%2Fimage-att-sbisadining-3920163057-05e91ebfb7-o-edit-8a6a62e3-05ad-4453-8ba2-301fec62e108.jp2/full/full/0/default.jpg",
+          "caption": "Sbisa Dining Hall, completed in 1913",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61640, "lon": -96.33992 },
+        "text": {
+          "headline": "Stop 8 — Cushing Memorial Library (1930–present)",
+          "text": "<p>The first freestanding library at Texas A&amp;M, Cushing Memorial Library opened in 1930 at a cost of $225,000. It is named for E.B. Cushing, Class of 1880, former president of the university's Board of Directors. Before this building opened, library collections were housed in rooms within other academic buildings. Today it is home to the university's special collections and rare books.</p><p><a href='/works/cushing-memorial-library.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/1ee%2Fimage-att-cushing-004-edit-5ac47693-b83f-4441-8186-5edaa5e6cb75.jp2/full/full/0/default.jpg",
+          "caption": "Cushing Memorial Library, the first freestanding library on campus",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61297, "lon": -96.34025 },
+        "text": {
+          "headline": "Stop 9 — Rudder Theatre Complex (1973–present)",
+          "text": "<p>The eleven-story Rudder Tower, built in 1973, stands on the site of Guion Hall — an earlier auditorium that served the campus for decades. The complex is named for James Earl Rudder, a decorated World War II commander who scaled the cliffs at Pointe du Hoc on D-Day and later served as Texas A&amp;M's president from 1959 to 1970. Today it is the primary venue for campus performing arts and large-scale events.</p><p><a href='/works/rudder-theatre-complex.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/880%2Fimage-att-ruddercenter-0013-edit-b7525188-eb97-408d-84ec-873f91bd6c97.jp2/full/full/0/default.jpg",
+          "caption": "Rudder Theatre Complex, built in 1973 on the site of Guion Hall",
+          "credit": "Texas A&M University Libraries"
+        }
+      },
+      {
+        "location": { "lat": 30.61011, "lon": -96.34010 },
+        "text": {
+          "headline": "Stop 10 — Kyle Field (1927–present)",
+          "text": "<p>Edwin Jackson Kyle, Class of 1899, established the first football field on campus in 1904 while serving as chairman of the Athletic Council. The current Kyle Field was erected in 1927 and has been expanded repeatedly since, growing into one of the largest stadiums in the country. It anchors the southern end of the main campus and, on game days, transforms the entire neighborhood into one of college football's loudest environments.</p><p><a href='/works/kyle-field-1.html'>Explore the collection →</a></p>"
+        },
+        "media": {
+          "url": "https://archipelago-dev.library.tamu.edu/iiif/2/d24%2Fimage-att-kylefield-049-3ee14915-4850-4f07-a4fd-301b75d40053.jpg/full/full/0/default.jpg",
+          "caption": "Kyle Field, first erected in 1927",
+          "credit": "Texas A&M University Libraries"
+        }
+      }
+    ]
+  }
+}
