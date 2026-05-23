@@ -1,19 +1,38 @@
-<Interstitials.Hero
-  headline="Aggieland Through Time"
-  description="Navigate through time with our dynamic mapping system that visualizes the physical growth and architectural evolution of campus. Explore how academic buildings, residence halls, recreational facilities, and iconic landmarks have shaped the Aggie experience across generations."
-  background="theme"
-  random={true}
-  links={[
+<HeroClient 
+  slides={[
     {
-      href: "/map",
-      title: "View Map",
-      type: "primary",
+      image: "https://aggieux.tamu.edu/assets/rev-BitGVSdq.jpg",
+      headline: "Aggieland Through Time",
+      description: "Navigate through time with our dynamic mapping system that visualizes the physical growth and architectural evolution of campus. Explore how academic buildings, residence halls, recreational facilities, and iconic landmarks have shaped the Aggie experience across generations.",
+      buttons: [
+        { label: "View Map", href: "/map", type: "cta", icon: "aux_angles-right" },
+        { label: "Search", href: "/search", type: "cta-secondary", icon: "aux_arrow-right-long" }
+      ]
     },
     {
-      href: "/search",
-      title: "Search",
-      type: "secondary",
+      image: "https://archipelago-dev.library.tamu.edu/iiif/2/4af%2Fimage-att-laah-20190514-10-5632f207-6387-42bf-b95c-2136ae2328ca.jpg/full/!1280,1280/0/default.jpg",
+      headline: "Historical Timelines",
+      description: "Experience the university's growth through carefully curated timelines that contextualize campus development within broader historical moments.",
+      buttons: [
+        { label: "View Timelines", href: "/timeline", type: "cta", icon: "aux_angles-right" }
+      ]
     },
+    {
+      image: "https://archipelago-dev.library.tamu.edu/iiif/2/540%2Fimage-att-fishpond-002-63e40ab3-1523-4914-ace0-b6e486ea7c7e.jpg/full/!1280,1280/0/default.jpg",
+      headline: "Building Histories",
+      description: "Each structure tells a story. Discover the architects, construction dates, renovations, and significant events associated with every building on campus.",
+      buttons: [
+        { label: "Search Buildings", href: "/search", type: "cta", icon: "aux_angles-right" }
+      ]
+    },
+    {
+      image: "https://archipelago-dev.library.tamu.edu/iiif/2/040%2Fimage-att-cv-1921-1930-12-edit-79797ba7-f468-4ac4-99ad-a1578b8d7980.jp2/full/!1280,1280/0/default.jpg",
+      headline: "Walking Tours",
+      description: "Explore the Texas A&M campus through curated walking routes connected by era, theme, or location — with archival photographs and historical context at every stop.",
+      buttons: [
+        { label: "Explore Tours", href: "/tours", type: "cta", icon: "aux_angles-right" }
+      ]
+    }
   ]}
 />
 

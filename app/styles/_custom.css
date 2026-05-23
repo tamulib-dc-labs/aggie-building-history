@@ -140,3 +140,32 @@
 [data-testid="slider-header"] button div {
   background-color: #500000 !important;
 }
+
+@media (max-width: 1400px) {
+  .hero {
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  .hero .hero__image {
+    aspect-ratio: 2.5 / 1;
+    height: auto !important;
+    width: 100%;
+  }
+}
+
+.hero .hero__image img {
+  width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  z-index: -999 !important;
+  height: 100% !important;
+}
+
+/* Center vertically the search button text and icon */
+.search__form button.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: normal !important;
+}

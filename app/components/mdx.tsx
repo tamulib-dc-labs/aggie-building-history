@@ -7,6 +7,7 @@
 export const components = {
   Example: './Example.tsx',
   TAMUFooter: './TAMUFooter.tsx',
+  TAMUHeader: './TAMUHeader.tsx',
 };
 
 // Map browser-only components to their source files; the builder bundles
@@ -17,4 +18,5 @@ export const clientComponents = {
   MapWithDateSlider: './MapWithDateSlider.client.tsx',
   BeforeAfter: './BeforeAfter.client.tsx',
   OpacityCompare: './OpacityCompare.client.tsx',
+  HeroClient: './Hero.client.tsx',
 };

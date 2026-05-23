@@ -52,13 +52,13 @@ export default function TAMUFooter() {
             margin: "0 auto",
             padding: "2.5rem 1.5rem",
             display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "2rem",
             alignItems: "start",
           }}
         >
           {/* Support button */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "0.5rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", gap: "2rem", paddingTop: "0.5rem" }}>
             <a
               href="https://library.tamu.edu/about/giving/"
               style={{
@@ -76,6 +76,11 @@ export default function TAMUFooter() {
             >
               Support the Libraries
             </a>
+            <img 
+              src="/150-logo.svg" 
+              alt="Texas A&M 150th Anniversary Logo" 
+              style={{ width: "120px", height: "auto" }} 
+            />
           </div>
 
           {/* AskUs */}

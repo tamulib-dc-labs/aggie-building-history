@@ -1,5 +1,4 @@
 import {Meta, Stylesheet} from "@canopy-iiif/app/head";
-import {CanopyHeader} from "@canopy-iiif/app/ui";
 
 export function Head() {
   return (
@@ -21,6 +20,8 @@ export function Head() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       />
       <script src="/before-after.js" />
+      <link rel="stylesheet" href="https://aux.tamu.edu/v2/2.0.2/styles/aux-styles.css" />
+      <script src="https://aux.tamu.edu/v2/2.0.2/js/aux.js" async></script>
     </>
   );
 }
@@ -28,7 +29,7 @@ export function Head() {
 export function App({children}) {
   return (
     <>
-      <CanopyHeader
+      <TAMUHeader
         navigation={[
           {href: "/search", label: "Buildings"},
           {href: "/map", label: "Map"},
@@ -37,7 +38,6 @@ export function App({children}) {
           {href: "/tours", label: "Tours"}
         ]}
         title="Aggieland Through Time"
-        logo={Logo}
       />
       <main>{children}</main>
       <TAMUFooter />
@@ -45,12 +45,4 @@ export function App({children}) {
   );
 }
 
-export const Logo = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-    <circle className="canopy-logo-backlight" cx="250" cy="250" r="250" />
-    <path
-      className="canopy-logo-overlay"
-      d="M125,33.45C50.28,76.68,0,157.47,0,250s50.28,173.32,125,216.55c74.72-43.23,125-124.01,125-216.55S199.72,76.68,125,33.45Z"
-    />
-  </svg>
-);
+
