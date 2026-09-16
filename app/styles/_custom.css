@@ -140,3 +140,123 @@
 [data-testid="slider-header"] button div {
   background-color: #500000 !important;
 }
+
+/* ── AggieUX-style landing page hero ── */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__image {
+  width: 100%;
+  aspect-ratio: 2.5 / 1;
+  overflow: hidden;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.hero__content {
+  background: #ffffff;
+  margin-top: -6rem;
+  margin-right: auto;
+  padding: 2.5rem 2.5rem 3rem;
+  max-width: 640px;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.heading-group--display .superhead {
+  display: block;
+  color: #500000;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.heading-group--display h1 {
+  color: #500000;
+  font-family: var(--font-serif, Georgia, serif);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem;
+}
+
+.hero__description {
+  color: #262626;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid #500000;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.btn--cta {
+  background: #500000;
+  color: #ffffff;
+}
+
+.btn--cta:hover {
+  background: #3c0000;
+  border-color: #3c0000;
+  color: #ffffff;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: #500000;
+}
+
+.btn--secondary:hover {
+  background: #500000;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    margin-top: -3rem;
+    padding: 1.75rem 1.5rem 2rem;
+    max-width: none;
+  }
+}
