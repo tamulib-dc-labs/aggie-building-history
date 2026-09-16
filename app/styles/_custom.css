@@ -141,6 +141,68 @@
   background-color: #500000 !important;
 }
 
+/* ── AggieUX-style logo strip ── */
+.logo-strip--light-gray {
+  background: #f3f3f1;
+  border-top: 2px solid rgb(209, 209, 209);
+}
+
+.logo-strip__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-strip__left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-strip__left img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.dot-divider {
+  flex: 1 1 auto;
+  align-self: center;
+  height: 0;
+  border-bottom: 2px dotted #500000;
+  opacity: 0.55;
+}
+
+.logo-strip__right {
+  flex-shrink: 0;
+}
+
+.logo-strip__right a {
+  color: #500000;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.logo-strip__right a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .logo-strip__left img {
+    height: 32px;
+  }
+  .dot-divider {
+    display: none;
+  }
+  .logo-strip__right a {
+    font-size: 0.85rem;
+  }
+}
+
 /* ── AggieUX-style landing page hero ── */
 .hero {
   position: relative;
