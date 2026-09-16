@@ -83,7 +83,7 @@ export default function TAMUFooter() {
             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem" }}>
               <img
                 alt="Ask Us"
-                src="https://library.tamu.edu/assets/bootstrap/images/askus_white.png"
+                src="/askus_white.png"
                 width={80}
                 height={76}
               />
