@@ -1,13 +1,13 @@
 title: Aggieland Through Time
 site:
-  baseUrl: https://innovation.library.tamu.edu/aggieland-through-time
+  baseUrl: https://exhibits.library.tamu.edu/aggieland-through-time
 collection:
   - https://digitalcollections.library.tamu.edu/do/7dfabdec-9241-4ad7-8bc2-9289df05a375/metadata/iiifmanifest3collection/default.jsonld
 metadata:
   - Date Built
   - Date Razed
 featured:
-  - "https://digitalcollections.library.tamu.edu/do/e789d5a7-0442-4f2a-93da-f1fd23dfeaa4/metadata/iiifmanifest3cws/default.jsonld"
+  - "https://digitalcollections.library.tamu.edu/do/0d773534-49b4-46be-a303-0ddf332dd4f5/metadata/iiifmanifest3cws/default.jsonld"
 search:
   results:
     work:
