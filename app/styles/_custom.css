@@ -141,6 +141,24 @@
   background-color: #500000 !important;
 }
 
+/* ── Manifest homepage link (wraps @samvera/clover-iiif/primitives Homepage) ── */
+.manifest-homepage__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  color: #500000;
+  text-decoration: none;
+}
+
+.manifest-homepage__link:hover {
+  text-decoration: underline;
+}
+
+.manifest-homepage__link svg {
+  flex-shrink: 0;
+}
+
 /* ── AggieUX-style logo strip ── */
 .logo-strip--light-gray {
   background: #f3f3f1;
