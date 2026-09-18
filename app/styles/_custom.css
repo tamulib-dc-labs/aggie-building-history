@@ -140,3 +140,243 @@
 [data-testid="slider-header"] button div {
   background-color: #500000 !important;
 }
+
+/* ── Manifest homepage link (wraps @samvera/clover-iiif/primitives Homepage) ── */
+.manifest-homepage__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  color: #500000;
+  text-decoration: none;
+}
+
+.manifest-homepage__link:hover {
+  text-decoration: underline;
+}
+
+.manifest-homepage__link svg {
+  flex-shrink: 0;
+}
+
+/* ── AggieUX-style logo strip ── */
+.logo-strip--light-gray {
+  background: #f3f3f1;
+  border-top: 2px solid rgb(209, 209, 209);
+}
+
+.logo-strip__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-strip__left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-strip__left img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.dot-divider {
+  flex: 1 1 auto;
+  align-self: center;
+  height: 0;
+  border-bottom: 2px dotted #500000;
+  opacity: 0.55;
+}
+
+.logo-strip__right {
+  flex-shrink: 0;
+}
+
+.logo-strip__right a {
+  color: #500000;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.logo-strip__right a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .logo-strip__left img {
+    height: 32px;
+  }
+  .dot-divider {
+    display: none;
+  }
+  .logo-strip__right a {
+    font-size: 0.85rem;
+  }
+}
+
+/* ── AggieUX-style landing page hero ── */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3.4 / 1;
+  max-height: 340px;
+  overflow: hidden;
+}
+
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__item-link {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(80, 0, 0, 0.85);
+  color: #ffffff;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  backdrop-filter: blur(2px);
+  transition: background-color 0.15s;
+}
+
+.hero__item-link:hover {
+  background: #500000;
+  color: #ffffff;
+}
+
+.hero__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.hero__content {
+  background: #ffffff;
+  margin-top: -3.5rem;
+  margin-right: auto;
+  padding: 1.75rem 2.25rem 2.25rem;
+  max-width: 640px;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.heading-group--display .superhead {
+  display: block;
+  color: #500000;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.heading-group--display h1 {
+  color: #500000;
+  font-family: var(--font-serif, Georgia, serif);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin: 0 0 0.85rem;
+}
+
+.hero__description {
+  color: #262626;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid #500000;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.btn--cta {
+  background: #500000;
+  color: #ffffff;
+}
+
+.btn--cta:hover {
+  background: #3c0000;
+  border-color: #3c0000;
+  color: #ffffff;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: #500000;
+}
+
+.btn--secondary:hover {
+  background: #500000;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .hero__image {
+    aspect-ratio: 2 / 1;
+    max-height: none;
+  }
+
+  .hero__item-link {
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: auto;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .hero__content {
+    margin-top: -2.5rem;
+    padding: 1.5rem 1.25rem 1.75rem;
+    max-width: none;
+  }
+}
