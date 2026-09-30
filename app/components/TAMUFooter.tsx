@@ -1,159 +1,143 @@
 import React from "react";
 
-const linkStyle: React.CSSProperties = { color: "#fff", textDecoration: "none" };
+/**
+ * Aggie UX slim footer, mirroring the library.tamu.edu production footer.
+ * Library links are absolute because this site is not served from
+ * library.tamu.edu. Styles come from app/styles/aux-chrome.css (scoped to
+ * `.aux-chrome`); icons come from the AUX sprite loaded by
+ * assets/aux-sprite.js.
+ */
 
-const navLinks = [
-  { href: "https://library.tamu.edu/about/", label: "About the Libraries" },
-  { href: "https://library.tamu.edu/about/phone", label: "Quick Phone & Mailing List" },
-  { href: "https://library.tamu.edu/directory/", label: "Directory" },
-  { href: "https://library.tamu.edu/about/employment/", label: "Employment" },
+const LIB = "https://library.tamu.edu";
+
+const social = [
+  { href: "https://twitter.com/tamulibraries", icon: "aux_x-twitter", name: "X" },
+  { href: "https://www.facebook.com/profile.php?id=61577442545402", icon: "aux_facebook", name: "Facebook" },
+  { href: "https://www.instagram.com/tamulibraries", icon: "aux_instagram", name: "Instagram" },
+  { href: "https://m.youtube.com/tamulibraries", icon: "aux_youtube", name: "YouTube" },
+  { href: "https://linkedin.com/company/tamulibraries", icon: "aux_linkedin", name: "LinkedIn" },
 ];
 
-const contactLinks = [
-  { href: "https://library.tamu.edu/askus/index", label: "Chat with Us" },
-  { href: "https://library.tamu.edu/about/phone", label: "Call Us" },
-  { href: "sms:9792561091", label: "Text Us @ 979-256-1091" },
-  { href: "https://library.tamu.edu/askus/contact-us.php", label: "Email Us" },
+const quickLinks = [
+  { href: `${LIB}/about/index.html`, label: "About the Libraries" },
+  { href: `${LIB}/about/phone.html`, label: "Quick Phone & Mailing List" },
+  { href: `${LIB}/directory/`, label: "Directory" },
+  { href: `${LIB}/about/employment.html`, label: "Employment" },
+  { href: `${LIB}/sitemap.html`, label: "Site Map" },
 ];
 
-const socialLinks = [
-  { href: "https://www.facebook.com/profile.php?id=61577442545402", icon: "fa-brands fa-facebook", label: "Facebook" },
-  { href: "https://www.instagram.com/tamulibraries", icon: "fa-brands fa-instagram", label: "Instagram" },
-  { href: "https://twitter.com/tamulibraries", icon: "fa-brands fa-square-x-twitter", label: "Twitter" },
-  { href: "https://www.youtube.com/user/tamulibrary", icon: "fa-brands fa-youtube", label: "YouTube" },
-  { href: "https://linkedin.com/company/tamulibraries", icon: "fa-brands fa-linkedin", label: "LinkedIn" },
+const compliance = [
+  { href: "https://www.tamu.edu/statements/index.html", label: "Statement" },
+  { href: "https://itaccessibility.tamu.edu/", label: "Accessibility" },
 ];
 
-const utilityLinks = [
-  { href: "https://howdy.tamu.edu", label: "howdy.tamu.edu" },
-  { href: "https://library.tamu.edu/services/off-campus_access", label: "Off-Campus Access" },
-  { href: "https://www.tamu.edu", label: "Texas A&M University" },
-  { href: "https://library.tamu.edu/site-policies", label: "Site Policies" },
-  { href: "https://www.tamu.edu/accessibility/", label: "Accessibility" },
-  { href: "https://library.tamu.edu/texas-crews", label: "Texas CREWS" },
-  { href: "https://library.tamu.edu/askus/contact-us.php", label: "Comments" },
-  { href: "https://library.tamu.edu/services-status", label: "Services Status" },
-];
+const Icon = ({ name }: { name: string }) => (
+  <svg aria-hidden="true" focusable="false">
+    <use xlinkHref={`#${name}`} />
+  </svg>
+);
 
 export default function TAMUFooter() {
   return (
-    <>
-      <footer
-        aria-label="giving and organization information"
-        style={{
-          background: "#500000",
-          color: "#fff",
-          fontFamily: "var(--font-sans, sans-serif)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "2.5rem 1.5rem",
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr",
-            gap: "2rem",
-            alignItems: "start",
-          }}
-        >
-          {/* Support button */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "0.5rem" }}>
-            <a
-              href="https://library.tamu.edu/about/giving/"
-              style={{
-                display: "block",
-                padding: "1rem 1.5rem",
-                border: "3px solid #fff",
-                color: "#fff",
-                textDecoration: "none",
-                fontWeight: "700",
-                fontSize: "1rem",
-                textAlign: "center",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-              }}
-            >
-              Support the Libraries
-            </a>
-          </div>
-
-          {/* AskUs */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem" }}>
-              <img
-                alt="Ask Us"
-                src="/askus_white.png"
-                width={80}
-                height={76}
-              />
-              <h2 style={{ margin: 0, fontSize: "1.4rem", fontWeight: "700", lineHeight: 1.2, textTransform: "uppercase" }}>
-                AskUs Anything<br />at any time.
-              </h2>
+    <div className="aux-chrome">
+      <footer className="footer--slim">
+        <div className="footer__container">
+          <div className="footer__columns">
+            <div className="footer__column footer__column--identity">
+              <div className="identity identity--stacked">
+                <a href={`${LIB}/index.html`}>
+                  <div className="identity__logo">
+                    <img alt="Texas A&amp;M University" src="https://cache.cloud.tamu.edu/web-assets/logos/TAM-LogoBox.png" />
+                  </div>
+                  <div className="identity__wordmark">
+                    <span className="wordmark__small">Texas A&amp;M University</span>
+                    <span className="wordmark__large">Libraries</span>
+                  </div>
+                </a>
+              </div>
             </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {contactLinks.map(({ href, label }) => (
-                <li key={label}>
-                  <a href={href} style={linkStyle}>
-                    <i className="fas fa-arrow-circle-right" aria-hidden="true" style={{ marginRight: "0.5rem" }} />
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
-          {/* Nav + Social */}
-          <div>
-            <ul style={{ listStyle: "none", margin: "0 0 1.5rem 0", padding: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {navLinks.map(({ href, label }) => (
-                <li key={label}><a href={href} style={linkStyle}>{label}</a></li>
-              ))}
+            <div className="footer__column column__links">
+              <span className="column__header">Follow Us!</span>
+              <div className="social-list">
+                <ul>
+                  {social.map(({ href, icon, name }) => (
+                    <li key={icon}>
+                      <a href={href}>
+                        <Icon name={icon} />
+                        @tamulibraries
+                        {/* Production reads every link as just "@tamulibraries" (icons are
+                            aria-hidden); name the platform for screen readers. */}
+                        <span className="sr-only"> on {name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="footer__column column__links">
+              <span className="column__header">Quick Links</span>
+              <div className="link-list link-list--leading">
+                <ul>
+                  {quickLinks.map(({ href, label }) => (
+                    <li key={label}>
+                      <a href={href}>{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="footer__column column__links">
+              <span className="column__header">Contact Us</span>
+              {/* Cushing Memorial Library & Archives contact block (production markup). */}
+              <address>
+                <div>
+                  <div>
+                    <p>
+                      <strong>Mailing Address:</strong>
+                      <br />
+                      Cushing Memorial Library &amp; Archives
+                      <br />
+                      TAMU 5000
+                      <br />
+                      College Station, TX 77843-5000
+                    </p>
+                    <p>
+                      <strong>Physical Address:</strong>
+                      <br />
+                      400 Spence St.
+                      <br />
+                      Main Campus near the Central Campus Garage
+                    </p>
+                  </div>
+                  <div></div>
+                </div>
+                <br />
+                <a className="btn btn--cta" href={`${LIB}/about/giving/index.html`}>
+                  Give to the Libraries <Icon name="aux_angles-right" />
+                </a>
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer__compliance-wrapper">
+          <div className="footer__compliance">
+            <ul className="compliance__list">
               <li>
-                <a href="https://library.tamu.edu/sitemap" style={linkStyle}>Site Map</a>
-                <span style={{ margin: "0 0.35rem" }}>|</span>
-                <a href="https://library.tamu.edu/search/site" style={linkStyle}>Site Search</a>
+                © {new Date().getFullYear()} <a href="https://www.tamu.edu">Texas A&amp;M University</a>
               </li>
-            </ul>
-            <h3 style={{ margin: "0 0 0.75rem", fontSize: "1rem", fontWeight: "700" }}>Follow Us</h3>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", gap: "0.85rem" }}>
-              {socialLinks.map(({ href, icon, label }) => (
+              {compliance.map(({ href, label }) => (
                 <li key={label}>
-                  <a href={href} aria-label={`Follow us on ${label}`} style={{ ...linkStyle, fontSize: "1.5rem" }}>
-                    <i className={icon} aria-hidden="true" />
-                  </a>
+                  <a href={href}>{label}</a>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </footer>
-
-      {/* Utility bar */}
-      <div
-        style={{
-          background: "#3b0000",
-          borderTop: "1px solid rgba(255,255,255,0.15)",
-          color: "#ccc",
-          fontSize: "0.8rem",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0.75rem 1.5rem",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.4rem 1.5rem",
-            justifyContent: "center",
-          }}
-        >
-          {utilityLinks.map(({ href, label }) => (
-            <a key={label} href={href} style={{ color: "#ccc", textDecoration: "none" }}>{label}</a>
-          ))}
-        </div>
-      </div>
-    </>
+    </div>
   );
 }

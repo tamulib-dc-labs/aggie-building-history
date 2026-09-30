@@ -85,73 +85,55 @@ export default function LandingHero({
 
   if (!finalImage || !finalHeadline) return null;
 
+  // AUX Landing Page Header (hero): heading-group--display + CTA button group.
+  // `.hero__item-link` (link to the featured building) is this site's own
+  // addition, styled in _custom.css. Styles for the rest come from the scoped
+  // AUX stylesheet, app/styles/aux-chrome.css.
   return (
-    <div className="hero">
-      <div className="hero__image">
-        <img src={finalImage} alt={finalImageAlt} />
-        {itemHref && itemLinkLabel ? (
-          <a href={itemHref} className="hero__item-link">
-            {itemLinkLabel}
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M5.5 3L10.5 8L5.5 13"
-                stroke="currentColor"
-                strokeWidth="1.618"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-        ) : null}
-      </div>
-      <div className="hero__container">
-        <div className="hero__content">
-          <div className="heading-group heading-group--display">
-            {superhead ? <span className="superhead">{superhead}</span> : null}
-            <h1>Explore Our History</h1>
-          </div>
-
-          {description ? <p className="hero__description">{description}</p> : null}
-
-          {links.length ? (
-            <div className="hero__actions">
-              {links.map((link) => (
-                <a
-                  key={`${link.href}-${link.title}`}
-                  href={link.href}
-                  target={link.target}
-                  className={`btn ${link.type === "secondary" ? "btn--secondary" : "btn--cta"}`}
-                >
-                  {link.title}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M5.5 3L10.5 8L5.5 13"
-                      stroke="currentColor"
-                      strokeWidth="1.618"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              ))}
-            </div>
+    <div className="aux-chrome">
+      <div className="hero">
+        <div className="hero__image">
+          <img src={finalImage} alt={finalImageAlt} />
+          {itemHref && itemLinkLabel ? (
+            <a href={itemHref} className="hero__item-link">
+              {itemLinkLabel}
+              <svg aria-hidden="true" focusable="false">
+                <use xlinkHref="#aux_angles-right" />
+              </svg>
+            </a>
           ) : null}
+        </div>
+        <div className="hero__container">
+          <div className="hero__content">
+            <div className="heading-group heading-group--display">
+              {superhead ? <span className="superhead">{superhead}</span> : null}
+              <h1>Explore Our History</h1>
+            </div>
+
+            {description ? <p className="hero__description">{description}</p> : null}
+
+            {links.length ? (
+              <div className="button-group button-group--cta">
+                {links.map((link) => (
+                  <a
+                    key={`${link.href}-${link.title}`}
+                    href={link.href}
+                    target={link.target}
+                    className={`btn ${link.type === "secondary" ? "btn--cta-secondary" : "btn--cta"}`}
+                  >
+                    {link.title}
+                    <svg aria-hidden="true" focusable="false">
+                      <use
+                        xlinkHref={
+                          link.type === "secondary" ? "#aux_arrow-right-long" : "#aux_angles-right"
+                        }
+                      />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

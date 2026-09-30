@@ -64,67 +64,6 @@
   --hero-bg-end:   #d6d3c4;   /* --cream    */
 }
 
-/* ── TAMU institutional top bar ── */
-#tamu-top-bar {
-  background-color: #500000;
-  width: 100%;
-}
-
-.tamu-top-bar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 0.6rem 1.5rem;
-}
-
-.tamu-top-bar__brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  line-height: 0;
-}
-
-.tamu-top-bar__brand svg {
-  height: 52px;
-  width: auto;
-}
-
-.tamu-top-bar__nav {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.tamu-top-bar__link {
-  color: #ffffff;
-  font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  white-space: nowrap;
-  opacity: 0.85;
-  transition: opacity 0.15s;
-}
-
-.tamu-top-bar__link:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-
-@media (max-width: 600px) {
-  .tamu-top-bar__nav {
-    gap: 1rem;
-  }
-  .tamu-top-bar__link {
-    font-size: 0.75rem;
-  }
-  .tamu-top-bar__brand svg {
-    height: 40px;
-  }
-}
-
-
 .leaflet-overlay-pane path {
   stroke: #500000 !important;
   fill: #500000 !important;
@@ -159,92 +98,16 @@
   flex-shrink: 0;
 }
 
-/* ── AggieUX-style logo strip ── */
-.logo-strip--light-gray {
-  background: #f3f3f1;
-  border-top: 2px solid rgb(209, 209, 209);
-}
-
-.logo-strip__container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0.6rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo-strip__left {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.logo-strip__left img {
-  height: 42px;
-  width: auto;
-  display: block;
-}
-
-.dot-divider {
-  flex: 1 1 auto;
-  align-self: center;
-  height: 0;
-  border-bottom: 2px dotted #500000;
-  opacity: 0.55;
-}
-
-.logo-strip__right {
-  flex-shrink: 0;
-}
-
-.logo-strip__right a {
-  color: #500000;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-}
-
-.logo-strip__right a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  .logo-strip__left img {
-    height: 32px;
-  }
-  .dot-divider {
-    display: none;
-  }
-  .logo-strip__right a {
-    font-size: 0.85rem;
-  }
-}
-
-/* ── AggieUX-style landing page hero ── */
-.hero {
+/* ── Hero: link to the featured building ──
+ * The hero itself is AUX markup styled by aux-chrome.css. This "View Item"
+ * link on the hero image is this site's own addition (not an AUX element),
+ * so it keeps its original styling here.
+ */
+.aux-chrome .hero__image {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
-.hero__image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3.4 / 1;
-  max-height: 340px;
-  overflow: hidden;
-}
-
-.hero__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.hero__item-link {
+.aux-chrome .hero__item-link {
   position: absolute;
   right: 1.25rem;
   bottom: 1.25rem;
@@ -254,7 +117,7 @@
   padding: 0.6rem 1rem;
   background: rgba(80, 0, 0, 0.85);
   color: #ffffff;
-  font-family: var(--font-sans, sans-serif);
+  font-family: "Work Sans", Arial, sans-serif;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -264,119 +127,63 @@
   transition: background-color 0.15s;
 }
 
-.hero__item-link:hover {
+.aux-chrome .hero__item-link:hover {
   background: #500000;
   color: #ffffff;
 }
 
-.hero__container {
-  max-width: 1300px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 1.5rem;
-}
-
-.hero__content {
-  background: #ffffff;
-  margin-top: -3.5rem;
-  margin-right: auto;
-  padding: 1.75rem 2.25rem 2.25rem;
-  max-width: 640px;
-  position: relative;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-}
-
-.heading-group--display .superhead {
-  display: block;
-  color: #500000;
-  font-family: var(--font-sans, sans-serif);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.heading-group--display h1 {
-  color: #500000;
-  font-family: var(--font-serif, Georgia, serif);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  margin: 0 0 0.85rem;
-}
-
-.hero__description {
-  color: #262626;
-  font-size: 1rem;
-  line-height: 1.55;
-  margin: 0 0 1.25rem;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.9rem 1.6rem;
-  font-family: var(--font-sans, sans-serif);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid #500000;
-  transition: background-color 0.15s, color 0.15s;
-}
-
-.btn svg {
-  flex-shrink: 0;
-}
-
-.btn--cta {
-  background: #500000;
-  color: #ffffff;
-}
-
-.btn--cta:hover {
-  background: #3c0000;
-  border-color: #3c0000;
-  color: #ffffff;
-}
-
-.btn--secondary {
-  background: transparent;
-  color: #500000;
-}
-
-.btn--secondary:hover {
-  background: #500000;
-  color: #ffffff;
+.aux-chrome .hero__item-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 @media (max-width: 768px) {
-  .hero__image {
-    aspect-ratio: 2 / 1;
-    max-height: none;
-  }
-
-  .hero__item-link {
+  .aux-chrome .hero__item-link {
     top: 0.75rem;
     right: 0.75rem;
     bottom: auto;
     padding: 0.5rem 0.85rem;
     font-size: 0.7rem;
   }
+}
 
-  .hero__content {
-    margin-top: -2.5rem;
-    padding: 1.5rem 1.25rem 1.75rem;
+/* ── AUX header: Canopy search in the main nav ──
+ * Documented deviation from AUX: AUX shows `.main-nav .search` only in the
+ * mobile menu (≤768px). This site's search (Canopy's typeahead form) must stay
+ * reachable on every page, so on desktop it sits at the right end of the
+ * main-nav row. On mobile it stays in AUX's own slot inside the
+ * "Menu & Search" panel.
+ */
+@media (min-width: 769px) {
+  /* Full-width row (its borders span the page, as on library.tamu.edu);
+     the links and search stay in AUX's centred 1400px column. */
+  .aux-chrome .main-nav {
+    display: flex;
+    align-items: center;
     max-width: none;
+    padding-inline: max(0px, calc((100% - 1400px) / 2));
+  }
+
+  .aux-chrome .main-nav .main-nav__links {
+    flex: 1 1 auto;
+    margin: 0;
+  }
+
+  .aux-chrome .main-nav .aux-chrome__search {
+    display: block;
+    flex: 0 1 28rem;
+    padding: 0.4rem 1rem 0.4rem 0;
+  }
+}
+
+/* ── AUX header: mobile search padding ──
+ * Documented deviation: AUX pads the mobile menu's search slot 32px, which
+ * truncates the "Search Historic Buildings" placeholder on phones. Tina wants
+ * the full placeholder visible, so the side padding is reduced.
+ */
+@media (max-width: 768px) {
+  .aux-chrome .main-nav .aux-chrome__search {
+    padding: 24px 8px;
   }
 }
