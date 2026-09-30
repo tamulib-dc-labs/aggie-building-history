@@ -192,8 +192,13 @@
  * Documented deviation: AUX's desktop header is ~241px tall, which pushes
  * page content well down the screen. Trims the identity row padding, the
  * Libraries lockup, the utility dropdown buttons and the search field so
- * the header reads tighter (~195px). Mobile keeps AUX's own sizing.
+ * the header reads tighter (~195px). Mobile keeps AUX's own sizing, apart
+ * from a 5px margin above and below the identity row (AUX has none).
  */
+.aux-chrome .main-header .site-header__identity {
+  margin-block: 5px;
+}
+
 @media (min-width: 769px) {
   .aux-chrome .main-header .site-header__identity {
     padding-block: 10px;
