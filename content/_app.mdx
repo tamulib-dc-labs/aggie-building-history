@@ -1,5 +1,4 @@
 import {Meta, Stylesheet} from "@canopy-iiif/app/head";
-import {CanopyHeader} from "@canopy-iiif/app/ui";
 import {GoogleAnalytics} from "@canopy-iiif/app/ui/server";
 
 export function Head() {
@@ -16,15 +15,13 @@ export function Head() {
         crossOrigin="true"
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,50,0..1;1,9..144,300..600,50,0..1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       />
       <script src="/leaflet-guard.js" />
       <script src="/before-after.js" />
+      <script src="https://aux.tamu.edu/v2/2.1.1/js/aux.js" defer />
+      <script src="/aux-sprite.js" defer />
     </>
   );
 }
@@ -32,15 +29,8 @@ export function Head() {
 export function App({children}) {
   return (
     <>
-      <CanopyHeader
-        navigation={[
-          {href: "/search", label: "Buildings"},
-          {href: "/map", label: "Map"}
-        ]}
-        title="Aggieland Through Time"
-        logo={Logo}
-      />
-      <main>{children}</main>
+      <AUXHeader />
+      <main id="main-content">{children}</main>
       <TAMUFooter />
     </>
   );

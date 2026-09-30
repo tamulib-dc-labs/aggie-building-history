@@ -1,14 +1,17 @@
 @import "tailwindcss";
 @import "@canopy-iiif/app/ui/styles/index.css";
+@import "./aux-chrome.css";
 @import "./_custom.css";
 
 @layer properties {
   :root,
   :host {
-    --font-sans: system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
-    --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+    /* Aggie UX type: Open Sans for body and H4–H6, Oswald for H1–H3. */
+    --font-sans: "Open Sans", Arial, sans-serif;
+    --font-display: "Oswald", Arial, sans-serif;
+    --font-serif: Georgia, "Times New Roman", serif;
     --font-mono: "IBM Plex Mono", "ui-monospace", Menlo, Consolas, monospace;
-    --default-font-family: var(--font-serif);
+    --default-font-family: var(--font-sans);
   }
 }
 
@@ -23,7 +26,7 @@
 @layer base {
   html {
     font-size: 110%;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   body {
@@ -34,10 +37,15 @@
   h1,
   h2,
   h3,
-  h4,
   .canopy-logo {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.025em;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
   }
 }

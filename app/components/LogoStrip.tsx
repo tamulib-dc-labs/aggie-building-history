@@ -14,14 +14,18 @@ export default function LogoStrip({
   label = "Celebrate 150 Years",
 }: LogoStripProps) {
   return (
-    <div className="logo-strip logo-strip--light-gray logo-strip--simple" role="banner">
-      <div className="logo-strip__container">
-        <div className="logo-strip__left">
-          <img alt={logoAlt} src={logoSrc} />
-        </div>
-        <span className="dot-divider" aria-hidden="true" />
-        <div className="logo-strip__right">
-          <a href={href}>{label}</a>
+    // AUX Logo Strip, production markup. role="banner" is dropped on purpose:
+    // the AUX site header is already the page's banner landmark.
+    <div className="aux-chrome">
+      <div className="logo-strip logo-strip--light-gray logo-strip--simple">
+        <div className="logo-strip__container">
+          <div className="logo-strip__left">
+            <img alt={logoAlt} src={logoSrc} />
+          </div>
+          <span className="dot-divider" aria-hidden="true" />
+          <div className="logo-strip__right">
+            <a href={href}>{label}</a>
+          </div>
         </div>
       </div>
     </div>

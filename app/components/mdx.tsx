@@ -7,6 +7,7 @@
 export const components = {
   Example: './Example.tsx',
   TAMUFooter: './TAMUFooter.tsx',
+  AUXHeader: './AUXHeader.tsx',
   LandingHero: './LandingHero.tsx',
   LogoStrip: './LogoStrip.tsx',
   ManifestHomepage: './ManifestHomepage.tsx',
