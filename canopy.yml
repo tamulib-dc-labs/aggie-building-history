@@ -31,3 +31,4 @@ theme:
   appearance: light
   accentColor: red
   grayColor: slate
+webmcp: true
