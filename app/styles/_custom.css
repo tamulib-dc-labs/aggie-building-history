@@ -216,3 +216,16 @@
     padding-block: 8px;
   }
 }
+
+/* ── Landing hero: capped image height ──
+ * Documented deviation: AUX sizes the hero image at 2.5:1 (560px above
+ * 1400px), which on laptop screens pushes the hero's description and CTA
+ * buttons below the fold. The featured thumbnails are also only ~800px
+ * wide, so a shorter crop keeps them from being stretched as far.
+ * Mobile keeps AUX's own sizing.
+ */
+@media (min-width: 769px) {
+  .aux-chrome .hero .hero__image {
+    max-height: min(380px, 45vh);
+  }
+}
