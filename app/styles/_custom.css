@@ -229,3 +229,7 @@
     max-height: min(380px, 45vh);
   }
 }
+
+.aux-chrome .main-header .identity a {
+  gap: 0 !important;
+}
