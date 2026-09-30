@@ -187,3 +187,32 @@
     padding: 24px 8px;
   }
 }
+
+/* ── AUX header: compact vertical spacing ──
+ * Documented deviation: AUX's desktop header is ~241px tall, which pushes
+ * page content well down the screen. Trims the identity row padding, the
+ * Libraries lockup, the utility dropdown buttons and the search field so
+ * the header reads tighter (~195px). Mobile keeps AUX's own sizing.
+ */
+@media (min-width: 769px) {
+  .aux-chrome .main-header .site-header__identity {
+    padding-block: 10px;
+  }
+
+  .aux-chrome .main-header .identity a .identity__logo img {
+    height: 56px;
+    width: auto;
+  }
+
+  .aux-chrome .utility-nav .utility-nav__container .utility-nav__right button.utility-nav__persona,
+  .aux-chrome .utility-nav .utility-nav__container .utility-nav__right button.utility-nav__quicklinks {
+    height: 36px;
+    padding-block: 8px;
+  }
+
+  .aux-chrome .main-nav .aux-chrome__search .search__form .search__input,
+  .aux-chrome .main-nav .aux-chrome__search .search__form button[type=submit] {
+    height: 48px;
+    padding-block: 8px;
+  }
+}

@@ -12,7 +12,12 @@ import {
 
 <Container variant="wide" className="canopy-work--layout">
   <div className="canopy-work--primary">
-    <Viewer iiifContent={props.manifest.id} />
+    <Viewer
+      iiifContent={props.manifest.id}
+      options={{
+        informationPanel: { renderContents: false, renderContentSearch: false },
+      }}
+    />
   </div>
   <div className="canopy-work--secondary">
     <header>
