@@ -114,6 +114,24 @@ function loadMarkerCluster(): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Full screen helpers
+// ---------------------------------------------------------------------------
+
+const EXPAND_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 6V1h5M10 1h5v5M15 10v5h-5M6 15H1v-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+const COMPRESS_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 1v5H1M15 6h-5V1M10 15v-5h5M1 10h5v5" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+
+function getFullscreenElement(): Element | null {
+  if (typeof document === "undefined") return null;
+  return document.fullscreenElement || (document as any).webkitFullscreenElement || null;
+}
+
+// iPhone Safari has no element Fullscreen API; there we fall back to a
+// fixed-position overlay that covers the viewport.
+function supportsNativeFullscreen(el: HTMLElement): boolean {
+  return Boolean(el.requestFullscreen || (el as any).webkitRequestFullscreen);
+}
+
+// ---------------------------------------------------------------------------
 // Year helpers
 // ---------------------------------------------------------------------------
 
@@ -141,6 +159,7 @@ export default function MapWithDateSlider({
   disableClusteringAtZoom?: number;
   tileLayers?: TileLayer[];
 }) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const clusterGroupRef = useRef<any>(null);
@@ -152,12 +171,76 @@ export default function MapWithDateSlider({
   const [startYear, setStartYear] = useState<number | null>(null);
   const [endYear, setEndYear] = useState<number | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [pseudoFullscreen, setPseudoFullscreen] = useState(false);
+  const toggleFullscreenRef = useRef<() => void>(() => {});
+  const fullscreenButtonRef = useRef<HTMLAnchorElement | null>(null);
+
+  toggleFullscreenRef.current = () => {
+    const root = rootRef.current;
+    if (!root) return;
+    if (pseudoFullscreen) {
+      setPseudoFullscreen(false);
+    } else if (getFullscreenElement()) {
+      (document.exitFullscreen || (document as any).webkitExitFullscreen)?.call(document);
+    } else if (supportsNativeFullscreen(root)) {
+      // Embedded contexts (e.g. an iframe without allowfullscreen) reject the
+      // request; use the overlay instead. Older webkit returns no promise.
+      const req = (root.requestFullscreen || (root as any).webkitRequestFullscreen).call(root);
+      req?.catch?.(() => setPseudoFullscreen(true));
+    } else {
+      setPseudoFullscreen(true);
+    }
+  };
 
   // ── 1. CSS + MarkerCluster ─────────────────────────────────────────────
   useEffect(() => {
     ensureLeafletCss();
     loadMarkerCluster().then(() => setMapReady(true));
   }, []);
+
+  // ── 1b. Track full screen state ────────────────────────────────────────
+  useEffect(() => {
+    const onChange = () => {
+      const active = getFullscreenElement() === rootRef.current;
+      setFullscreen(active || pseudoFullscreen);
+    };
+    onChange();
+    document.addEventListener("fullscreenchange", onChange);
+    document.addEventListener("webkitfullscreenchange", onChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onChange);
+      document.removeEventListener("webkitfullscreenchange", onChange);
+    };
+  }, [pseudoFullscreen]);
+
+  // Escape exits the overlay fallback (the browser handles it for native)
+  useEffect(() => {
+    if (!pseudoFullscreen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPseudoFullscreen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [pseudoFullscreen]);
+
+  // Resize the map and update the button whenever full screen changes
+  useEffect(() => {
+    mapInstanceRef.current?.invalidateSize();
+    const btn = fullscreenButtonRef.current;
+    if (btn) {
+      const label = fullscreen ? "Exit full screen" : "View full screen";
+      btn.innerHTML = fullscreen ? COMPRESS_ICON : EXPAND_ICON;
+      btn.title = label;
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("aria-pressed", String(fullscreen));
+    }
+  }, [fullscreen, mapReady]);
 
   // ── 2. Fetch pre-built static data ────────────────────────────────────
   useEffect(() => {
@@ -280,6 +363,33 @@ export default function MapWithDateSlider({
       }
     }
 
+    // Full screen toggle, under the zoom buttons
+    const FullscreenControl = L.Control.extend({
+      options: { position: "topleft" },
+      onAdd() {
+        const bar = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+        const btn = L.DomUtil.create("a", "", bar) as HTMLAnchorElement;
+        btn.href = "#";
+        btn.setAttribute("role", "button");
+        btn.style.display = "flex";
+        btn.style.alignItems = "center";
+        btn.style.justifyContent = "center";
+        btn.style.color = "#333";
+        btn.innerHTML = EXPAND_ICON;
+        btn.title = "View full screen";
+        btn.setAttribute("aria-label", "View full screen");
+        btn.setAttribute("aria-pressed", "false");
+        L.DomEvent.disableClickPropagation(bar);
+        L.DomEvent.on(btn, "click", (e) => {
+          L.DomEvent.preventDefault(e);
+          toggleFullscreenRef.current();
+        });
+        fullscreenButtonRef.current = btn;
+        return bar;
+      },
+    });
+    new FullscreenControl().addTo(map);
+
     // Default view while data loads
     map.setView([30.618, -96.336], 15);
 
@@ -288,6 +398,7 @@ export default function MapWithDateSlider({
     return () => {
       map.remove();
       mapInstanceRef.current = null;
+      fullscreenButtonRef.current = null;
       clusterGroupRef.current = null;
       initialBoundsSetRef.current = false;
     };
@@ -394,10 +505,21 @@ export default function MapWithDateSlider({
   const total = markers.length;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      ref={rootRef}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        ...(fullscreen ? { height: "100dvh", background: "#fff" } : {}),
+        ...(pseudoFullscreen ? { position: "fixed", inset: 0, zIndex: 10000 } : {}),
+      }}
+    >
       {/* Map container — always in DOM so the ref is available on first mount */}
-      <div style={{ position: "relative" }}>
-        <div ref={mapContainerRef} style={{ height }} />
+      <div style={{ position: "relative", ...(fullscreen ? { flex: 1, minHeight: 0 } : {}) }}>
+        <div
+          ref={mapContainerRef}
+          style={fullscreen ? { position: "absolute", inset: 0 } : { height }}
+        />
 
         {(loading || !mapReady) && !fetchError && (
           <div
