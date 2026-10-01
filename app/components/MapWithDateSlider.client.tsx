@@ -516,9 +516,12 @@ export default function MapWithDateSlider({
     >
       {/* Map container — always in DOM so the ref is available on first mount */}
       <div style={{ position: "relative", ...(fullscreen ? { flex: 1, minHeight: 0 } : {}) }}>
+        {/* `position` must stay set: Leaflet relies on the container's
+            inline position: relative, and dropping it lets the map panes
+            escape the container's clipping. */}
         <div
           ref={mapContainerRef}
-          style={fullscreen ? { position: "absolute", inset: 0 } : { height }}
+          style={{ position: "relative", height: fullscreen ? "100%" : height }}
         />
 
         {(loading || !mapReady) && !fetchError && (
