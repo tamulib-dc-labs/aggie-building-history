@@ -37,7 +37,8 @@ type EnrichedMarker = {
   thumbnailWidth?: number;
   thumbnailHeight?: number;
   dateBuilt: number | null;
-  dateRazed: number | null; // null = still standing
+  dateRazed: number | null; // still-standing buildings use the current year, for filtering
+  standing: boolean;
 };
 
 // ---------------------------------------------------------------------------
@@ -270,10 +271,8 @@ export default function MapWithDateSlider({
             const meta = hrefToMeta.get(manifest.href);
             const dateBuilt = parseYear(meta?.[0]) ?? 2025;
             const razedRaw = meta?.[1];
-            const dateRazed =
-              razedRaw && razedRaw.toLowerCase() !== "present"
-                ? (parseYear(razedRaw) ?? 2025)
-                : 2025;
+            const standing = !razedRaw || razedRaw.toLowerCase() === "present";
+            const dateRazed = standing ? 2025 : (parseYear(razedRaw) ?? 2025);
 
             manifest.features.forEach((feature, i) => {
               enriched.push({
@@ -287,6 +286,7 @@ export default function MapWithDateSlider({
                 thumbnailHeight: manifest.thumbnailHeight,
                 dateBuilt,
                 dateRazed,
+                standing,
               });
             });
           });
@@ -470,7 +470,7 @@ export default function MapWithDateSlider({
             ${
               m.dateBuilt
                 ? `<p style="margin:0 4px 6px;font-size:0.75rem;color:#666">
-                     ${m.dateBuilt}${m.dateRazed ? ` – ${m.dateRazed}` : " – present"}
+                     ${m.dateBuilt} – ${m.standing ? "Present" : m.dateRazed}
                    </p>`
                 : ""
             }
