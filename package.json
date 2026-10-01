@@ -9,6 +9,7 @@
     "dev": "DEV_ONCE=1 tsx app/scripts/canopy-build.mts && node app/scripts/patch-base-path.mjs && tsx app/scripts/canopy-build.mts"
   },
   "dependencies": {
+    "@allmaps/leaflet": "^1.0.0-beta.53",
     "@canopy-iiif/app": "^1.13.1",
     "@markpbaggett/before-after": "^0.4.0",
     "@samvera/clover-iiif": "^3.16.2",

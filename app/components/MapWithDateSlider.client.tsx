@@ -1,6 +1,7 @@
 // @ts-nocheck — leaflet has no @types in this project; esbuild resolves it fine
 import React, { useEffect, useRef, useMemo, useState } from "react";
 import L from "leaflet";
+import { WarpedMapLayer } from "@allmaps/leaflet";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -11,6 +12,11 @@ type TileLayer = {
   url: string;
   attribution: string;
   maxZoom?: number;
+};
+
+type GeorefAnnotation = {
+  name: string;
+  url: string; // Allmaps / IIIF Georeference Annotation URL
 };
 
 type NavManifest = {
@@ -133,6 +139,41 @@ function setClusterButtonState(btn: HTMLAnchorElement, clustered: boolean): void
   btn.setAttribute("aria-pressed", String(!clustered));
 }
 
+// Georeferenced overlay toggle icons
+const OVERLAY_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5 15 5.25 8 9 1 5.25Z" fill="currentColor"/><path d="M1 8.25 8 12l7-3.75M1 11.25 8 15l7-3.75" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`;
+
+function setOverlayButtonState(btn: HTMLAnchorElement, visible: boolean): void {
+  const text = visible ? "Hide historic imagery" : "Show historic imagery";
+  btn.title = text;
+  btn.setAttribute("aria-label", text);
+  btn.setAttribute("aria-pressed", String(visible));
+  btn.style.color = visible ? "#fff" : "#500000";
+  btn.style.background = visible ? "#500000" : "";
+}
+
+/**
+ * Stand-in for a WarpedMapLayer that can be toggled from the layer switcher.
+ * The Allmaps layer reloads its annotation every time it is added to a map,
+ * so it is created once, on first show, and afterwards only its pane is
+ * hidden or shown.
+ */
+const GeorefToggleLayer = L.Layer.extend({
+  initialize(url: string, pane: string) {
+    this._url = url;
+    this._paneName = pane;
+  },
+  onAdd(map: L.Map) {
+    if (!this._warped) {
+      this._warped = new WarpedMapLayer(this._url, { pane: this._paneName });
+      this._warped.addTo(map);
+    }
+    map.getPane(this._paneName).style.display = "";
+  },
+  onRemove(map: L.Map) {
+    map.getPane(this._paneName).style.display = "none";
+  },
+});
+
 function getFullscreenElement(): Element | null {
   if (typeof document === "undefined") return null;
   return document.fullscreenElement || (document as any).webkitFullscreenElement || null;
@@ -164,6 +205,7 @@ export default function MapWithDateSlider({
   maxClusterRadius = 20,
   disableClusteringAtZoom = 19,
   tileLayers,
+  georefAnnotations,
 }: {
   iiifContent?: string; // accepted but unused — data comes from static files
   height?: string;
@@ -171,6 +213,7 @@ export default function MapWithDateSlider({
   maxClusterRadius?: number;
   disableClusteringAtZoom?: number;
   tileLayers?: TileLayer[];
+  georefAnnotations?: GeorefAnnotation[];
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -362,12 +405,14 @@ export default function MapWithDateSlider({
     const map = L.map(mapContainerRef.current, {
       scrollWheelZoom: true,
       zoomControl: true,
+      // The Allmaps plugin can't animate zooms of more than one level
+      zoomAnimationThreshold: 1,
     });
 
     // Tile layers
     const layers = tileLayers ?? [];
+    const baseMapLayers: Record<string, L.TileLayer> = {};
     if (layers.length > 0) {
-      const baseMapLayers: Record<string, L.TileLayer> = {};
       layers.forEach((tl, i) => {
         const layer = L.tileLayer(tl.url, {
           attribution: tl.attribution,
@@ -376,9 +421,23 @@ export default function MapWithDateSlider({
         baseMapLayers[tl.name] = layer;
         if (i === 0) layer.addTo(map);
       });
-      if (layers.length > 1) {
-        L.control.layers(baseMapLayers).addTo(map);
-      }
+    }
+
+    // Georeferenced overlays sit above every base layer (tilePane, z 200) but
+    // below vector overlays (400) and markers / clusters (600). Each gets its
+    // own pane so later entries draw on top of earlier ones.
+    const georefLayers: Record<string, L.Layer> = {};
+    (georefAnnotations ?? []).forEach((ga, i) => {
+      const paneName = `georef-${i}`;
+      const pane = map.createPane(paneName);
+      pane.style.zIndex = String(250 + i);
+      pane.style.pointerEvents = "none";
+      georefLayers[ga.name] = new GeorefToggleLayer(ga.url, paneName);
+    });
+    const georefList = Object.values(georefLayers);
+
+    if (layers.length > 1 || georefList.length > 0) {
+      L.control.layers(baseMapLayers, georefLayers).addTo(map);
     }
 
     // Full screen toggle, under the zoom buttons
@@ -432,6 +491,35 @@ export default function MapWithDateSlider({
         },
       });
       new ClusterControl().addTo(map);
+    }
+
+    // Show / hide every georeferenced overlay at once
+    if (georefList.length > 0) {
+      const anyVisible = () => georefList.some((l) => map.hasLayer(l));
+      const OverlayControl = L.Control.extend({
+        options: { position: "topleft" },
+        onAdd() {
+          const bar = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+          const btn = L.DomUtil.create("a", "", bar) as HTMLAnchorElement;
+          btn.href = "#";
+          btn.setAttribute("role", "button");
+          btn.style.display = "flex";
+          btn.style.alignItems = "center";
+          btn.style.justifyContent = "center";
+          btn.innerHTML = OVERLAY_ICON;
+          setOverlayButtonState(btn, false);
+          L.DomEvent.disableClickPropagation(bar);
+          L.DomEvent.on(btn, "click", (e) => {
+            L.DomEvent.preventDefault(e);
+            const show = !anyVisible();
+            georefList.forEach((l) => (show ? map.addLayer(l) : map.removeLayer(l)));
+          });
+          // Keep the button in sync with the layer switcher checkboxes
+          map.on("layeradd layerremove", () => setOverlayButtonState(btn, anyVisible()));
+          return bar;
+        },
+      });
+      new OverlayControl().addTo(map);
     }
 
     // Default view while data loads
