@@ -121,6 +121,18 @@ function loadMarkerCluster(): Promise<void> {
 const EXPAND_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1 6V1h5M10 1h5v5M15 10v5h-5M6 15H1v-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
 const COMPRESS_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 1v5H1M15 6h-5V1M10 15v-5h5M1 10h5v5" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
 
+// Cluster toggle icons show the action the button will take
+const UNGROUP_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3" cy="3" r="2.25" fill="currentColor"/><circle cx="13" cy="5" r="2.25" fill="currentColor"/><circle cx="6" cy="13" r="2.25" fill="currentColor"/></svg>`;
+const GROUP_ICON = `<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5" fill="currentColor"/><text x="8" y="11" text-anchor="middle" font-size="8" font-weight="700" font-family="sans-serif" fill="#fff">3</text></svg>`;
+
+function setClusterButtonState(btn: HTMLAnchorElement, clustered: boolean): void {
+  const label = clustered ? "Ungroup markers" : "Group markers";
+  btn.innerHTML = clustered ? UNGROUP_ICON : GROUP_ICON;
+  btn.title = label;
+  btn.setAttribute("aria-label", label);
+  btn.setAttribute("aria-pressed", String(!clustered));
+}
+
 function getFullscreenElement(): Element | null {
   if (typeof document === "undefined") return null;
   return document.fullscreenElement || (document as any).webkitFullscreenElement || null;
@@ -174,6 +186,8 @@ export default function MapWithDateSlider({
   const [mapReady, setMapReady] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [pseudoFullscreen, setPseudoFullscreen] = useState(false);
+  const [clustered, setClustered] = useState(true);
+  const clusterButtonRef = useRef<HTMLAnchorElement | null>(null);
   const toggleFullscreenRef = useRef<() => void>(() => {});
   const fullscreenButtonRef = useRef<HTMLAnchorElement | null>(null);
 
@@ -242,6 +256,10 @@ export default function MapWithDateSlider({
       btn.setAttribute("aria-pressed", String(fullscreen));
     }
   }, [fullscreen, mapReady]);
+
+  useEffect(() => {
+    if (clusterButtonRef.current) setClusterButtonState(clusterButtonRef.current, clustered);
+  }, [clustered]);
 
   // ── 2. Fetch pre-built static data ────────────────────────────────────
   useEffect(() => {
@@ -390,6 +408,32 @@ export default function MapWithDateSlider({
     });
     new FullscreenControl().addTo(map);
 
+    // Group / ungroup toggle. Ungrouped markers stay separate at every zoom.
+    if (cluster) {
+      const ClusterControl = L.Control.extend({
+        options: { position: "topleft" },
+        onAdd() {
+          const bar = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+          const btn = L.DomUtil.create("a", "", bar) as HTMLAnchorElement;
+          btn.href = "#";
+          btn.setAttribute("role", "button");
+          btn.style.display = "flex";
+          btn.style.alignItems = "center";
+          btn.style.justifyContent = "center";
+          btn.style.color = "#500000";
+          setClusterButtonState(btn, true);
+          L.DomEvent.disableClickPropagation(bar);
+          L.DomEvent.on(btn, "click", (e) => {
+            L.DomEvent.preventDefault(e);
+            setClustered((c) => !c);
+          });
+          clusterButtonRef.current = btn;
+          return bar;
+        },
+      });
+      new ClusterControl().addTo(map);
+    }
+
     // Default view while data loads
     map.setView([30.618, -96.336], 15);
 
@@ -399,6 +443,7 @@ export default function MapWithDateSlider({
       map.remove();
       mapInstanceRef.current = null;
       fullscreenButtonRef.current = null;
+      clusterButtonRef.current = null;
       clusterGroupRef.current = null;
       initialBoundsSetRef.current = false;
     };
@@ -414,7 +459,7 @@ export default function MapWithDateSlider({
     }
 
     const useCluster =
-      cluster && typeof (L as any).markerClusterGroup === "function";
+      cluster && clustered && typeof (L as any).markerClusterGroup === "function";
 
     const group: any = useCluster
       ? (L as any).markerClusterGroup({
@@ -495,7 +540,7 @@ export default function MapWithDateSlider({
         initialBoundsSetRef.current = true;
       }
     }
-  }, [filteredMarkers, mapReady, cluster, maxClusterRadius, disableClusteringAtZoom]);
+  }, [filteredMarkers, mapReady, cluster, clustered, maxClusterRadius, disableClusteringAtZoom]);
 
   // ── Render ─────────────────────────────────────────────────────────────
 
